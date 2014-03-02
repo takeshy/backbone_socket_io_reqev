@@ -6,12 +6,9 @@ class Spa.SampleRouter extends Backbone.Router
     "spa/timers/:type": "timer"
     ".*": "timer"
 
-  before: ()->
+  timer:(type)->
     @view.remove() if @view
     @view = null
-
-  timer:(type)->
-    @before()
     type ||= "current"
     @view = new Spa.TimerView(collection: @timers,type: type)
     $("#container").html(@view.render().el)
