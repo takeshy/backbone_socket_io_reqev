@@ -12,8 +12,6 @@ app.use('/assets', Mincer.createServer(environment));
 
 app.configure(function(){
   app.set('port', 40000);
-  app.use(express.favicon());
-  app.use(express.static(path.join(__dirname, 'public')));
 });
 app.get("/",function(req,res){
   res.sendfile('public/index.html');
