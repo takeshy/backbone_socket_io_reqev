@@ -1,0 +1,20 @@
+{
+  "name": "spa-sample",
+  "version": "0.0.0",
+  "description": "sample",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "*",
+    "ejs": "*",
+    "coffee-script": "*",
+    "mincer": "*",
+    "socket.io": "*",
+    "socket.io-reqev": "*",
+    "underscore": "*"
+  },
+  "author": "Takeshi Morita",
+  "license": "MIT"
+}
