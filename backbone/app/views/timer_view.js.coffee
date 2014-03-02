@@ -4,23 +4,17 @@ class Spa.TimerView extends Backbone.View
   events:
     "click a": "changeTimer"
 
-  changeTimer: (e)->
-    e.preventDefault()
-    e.stopPropagation()
-    router.navigate($(e.currentTarget).attr("href"), {trigger: true})
-
-  remove: ()->
-    for v in @childViews
-      v.remove()
-    @collection.unwatch()
-    super()
-
   initialize: (options)->
     @childViews = []
     @type = options.type
     @collection.watch(@type)
     @model = @collection.get(@type)
     @listenTo(@model,'change', @updateTimer)
+
+  changeTimer: (e)->
+    e.preventDefault()
+    e.stopPropagation()
+    router.navigate($(e.currentTarget).attr("href"), {trigger: true})
 
   updateTimer: ()->
     view = new Spa.TimeView(model: @model)
@@ -30,3 +24,10 @@ class Spa.TimerView extends Backbone.View
   render: ()->
     $(@el).html(@template(type: @type))
     @
+
+  remove: ()->
+    for v in @childViews
+      v.remove()
+    @collection.unwatch()
+    super()
+

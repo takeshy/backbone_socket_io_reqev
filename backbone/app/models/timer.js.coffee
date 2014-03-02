@@ -12,11 +12,12 @@ class Spa.TimerCollection extends Backbone.Collection
   update: (obj)->
     @add(obj,merge: true)
 
-  unwatch: ()->
-    @socket.unwatch()
-
   watch: (id)->
     return if !id || !@get(id)
     @get(id).unset("time")
     param = if id == "current" then {requests: id} else {events: id}
     @socket.watch(param)
+
+  unwatch: ()->
+    @socket.unwatch()
+
